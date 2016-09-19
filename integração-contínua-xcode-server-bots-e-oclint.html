@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Integração Contínua, Xcode, ios, developer, oclint, xcode server, bots">
+    <meta name="description" content="Uma das técnicas utilizadas em metodologias ágeis, como XP e Scrum, é a integração contínua. Ela garante que a cada build o sistema funciona de forma coesa, verificando se as alterações do código ou novas funcionalidades criaram novos defeitos no projeto, mas é importante que se tenha um controle de versão centralizado.">
+    <link rel="shortcut icon" href="favIcon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+    <link rel="stylesheet" id="ppstyle" type="text/css" href="style.css">
+    <link rel='stylesheet' href='./css/animate.css' /><link rel='stylesheet' href='./css/font-awesome.min.css'/><link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,800' rel='stylesheet' type='text/css'>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/blocs.js"></script>
+    <title>Integração Contínua, Xcode Server, Bots e OClint - Nathan Hegedus</title>
+</head>
+<body>
+<!-- Main container -->
+<div class="page-container">
+    
+<!-- Navigation Bloc -->
+<div id="b-nav" class="bloc-container">
+	<div id="bloc-nav" class="d-mode">
+		<div id="nav-bloc" class="bloc bgc-2 b-parallax bg-header-bottom-light d-bloc">
+			<div class="container bloc-sm">
+				<nav class="navbar nav-invert row">
+					<div class="navbar-header">
+						<a class="navbar-brand ltc-1" href="index.html">Nathan Hegedus</a>
+						<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+							<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse navbar-1">
+						<ul class="site-navigation nav">
+							<li>
+								<a href="index.html">Projetos</a>
+							</li>
+							<li>
+								<a href="blog.html">Blog</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Navigation Bloc END -->
+
+<!-- bloc-11 -->
+<div class="bloc l-bloc " id="bloc-11">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-12">
+				<img src="img/blog/proj-bot.png" class="img-responsive center-block" alt='' />
+				<h3 class="mg-md">
+					Integração Contínua, Xcode Server, Bots e OCLint
+				</h3>
+				<h5 class="mg-md">
+					30/03/2015
+				</h5>
+				<p>
+					<strong>Introdução</strong><br />Uma das técnicas utilizadas em metodologias ágeis, como XP e Scrum, é a integração contínua. Ela garante que a cada build o sistema funciona de forma coesa, verificando se as alterações do código ou novas funcionalidades criaram novos defeitos no projeto, mas é importante que se tenha um controle de versão centralizado.<br /><br /><i>“Integração Contínua é uma pratica de desenvolvimento de software onde os membros de um time integram seu trabalho frequentemente, geralmente cada pessoa integra pelo menos diariamente – podendo haver multiplas integrações por dia. Cada integração é verificada por um build automatizado (incluindo testes) para detectar erros de integração o mais rápido possível. Muitos times acham que essa abordagem leva a uma significante redução nos problemas de integração e permite que um time desenvolva software coeso mais rapidamente.”</i> <strong>Martin Fowler</strong><br />Alguns devs podem dizer que ela é um dedo duro. Sim, é verdade. Sendo ela resposável pela análise do projeto, é possível saber quem foi o “criador” dos defeitos, mas não podemos pensar desta forma, certo? Temos que ver os pontos positivos da Integração Contínua que são: melhorar a colaboração da equipe, ampliar a cobertura de testes, gerar estatísticas e distribuir o build de maneira automática.<br /><br /><strong><br /><br />Xcode Server</strong><strong><br /></strong>Na WWDC 2014 a Apple apresentou a nova versão do Xcode Server que junto ao Xcode 5, ou superior, forcenem uma maneira de realizar Integração Contínua atráves de Bots, que realizam a automação de builds, análise de código, teste e archive do projeto e até mesmo distribuição automática!<br /><br />A configuração é bem simples, e é necessário um Mac rodando o Yosemite. Após a instalação a configuração básica é o Xcode, que também precisa estar instalado na máquina. A partir daí toda configuração é feita no sei Mac de development.<br /><br /><br /><br /><strong>Bots<br /></strong>Como dito anteriormente, os Bots são responsáveis pela Integração Contínua. Temos algumas configurações na hora de criar o Bot, como:<br />1. Vincular seu repositório: Como vamos usar um controle versão e muito provavelmente o projeto terá várias pessoas trabalhando em paralelo, desta forma sempre que houver a integração o Bot utilizará a última versão do código no seu repositório;<br />2. Schedule: É possível agendar quando haverá a integração. Uma vez por dia, a cada 5 minutos, sempre que houver um novo commit;<br />3. Actions: Executar análise estática, teste e archive;<br />4. Cleanning: Uma vez por dia, nunca. Caso o projeto fique muito grande e você tenha várias integrações por dia, então deixar o cleanning para cada integração talvez não seja uma boa, pois a Integração pode levar muito tempo para ser realizada;<br />5. Testes: Você escolhe os aparelhos em que deseja testar, também é possível utilizar devices ao invés de simuladores, e esses necessitam estar conectados no servidor;<br />6. Notificações: Aqui é uma parte em que a Integração Contínua se torna o vilão dedo duro, pois é possível configurar receber notificações por email de testes que falharam, builds com erros e warnings e análise estática.<br /><br />Os relatórios da integrações ficam disponíveis de duas formas:<br /><br />Relátorio na máquina de development
+				</p><img src="img/blog/integracao-continua1.png" class="img-responsive" alt="Relátorio na máquina de development" />
+				<p>
+					Aqui é possível ver detalhes de build de cada projeto, bem como a quantidade de erros e detalhes, warings e detalhes, issues e tests sucedidos ou não, quais aparelhos foram testados, commits e logs.<br /><br /><br />Relatório do Xcode Server.
+				</p><img src="img/blog/integracao-continua2.png" class="img-responsive" alt='' />
+				<p>
+					Já no relatório gerado pelo servidor, apenas um resumo é exibido contento a quantidade de erros, warnings, issues e erros adicionados ou removidos na última integração. O relátorio fica alterando automáticamente entre os projetos e também é possível ver as pessoas que fizeram commit e a porcentagem de commits, erros e warnings de cada pessoa.<br /><br /><br /><br /><strong>OCLint</strong><br />Contudo esses relátorios só serão exibidos após a integração, ai você se pergunta “E agora Moisés? Só vou descobrir o que tem de errado depois que me dedurarem?”. Muita hora nessa calma! Existem dois jeitos de você saber como está seu código, um deles é a análise estática feita pelo próprio Xcode e o outro é utilizar o <a href="http://oclint.org/" target="_blank">OCLint</a><br /><br />"OCLint é uma ferramenta de análise estática de código para melhorar a qualidade e reduzir os defeitos inspecionando C, C ++ e código Objective-C e à procura de potenciais problemas como: Possíveis como erros - if vazios / else / try / catch / finally declarações.”<br /><br />Básicamente ele analisará seu código e atráves de uma lista de regras, configuráveis, ele irá reportar problemas e possíveis problemas no seu projeto. Facilitando sua vida e todos o que forem pegar o projeto e você não precisará ficar receoso de subir seu código para integração :)<br /><br />Essa foi apenas uma abordagem introdutória sobre esses 4 assuntos. Caso queira se aprofundar mais, eu recomendo esses links:<br /><br /><a href="http://www.devmedia.com.br/integracao-continua-uma-introducao-ao-assunto/28002" target="_blank">http://www.devmedia.com.br/integracao-continua-uma-introducao-ao-assunto/28002</a><br /><a href="http://blog.caelum.com.br/integracao-continua/" target="_blank">http://blog.caelum.com.br/integracao-continua/</a><br /><a href="http://www.infoq.com/br/continuous_integration/presentations/" target="_blank">http://www.infoq.com/br/continuous_integration/presentations/</a><br /><a href="http://matt.vlasach.com/xcode-bots-hosted-git-repositories-and-automated-testflight-builds/" target="_blank">http://matt.vlasach.com/xcode-bots-hosted-git-repositories-and-automated-testflight-builds/</a><br /><a href="http://oclint.org/" target="_blank">http://oclint.org/</a><br /><a href="https://developer.apple.com/videos/wwdc/2014/#415" target="_blank">https://developer.apple.com/videos/wwdc/2014/#415</a><br /><a href="http://useyourloaf.com/blog/2014/11/02/continuous-integration-with-xcode-server.html" target="_blank">http://useyourloaf.com/blog/2014/11/02/continuous-integration-with-xcode-server.html</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-11 END -->
+
+<!-- Footer - bloc-13 -->
+<div class="bloc l-bloc " id="bloc-13">
+	<div class="container bloc-sm">
+		<div class="row fadeIn animated">
+			<div class="col-sm-12 col-md-6 col-md-offset-3">
+				<div class="col-sm-3 text-center">
+					<a class="social" href="twitter.com/nthegedus" target="_blank"></a>
+					<div class="text-center">
+						<a class="social" href="twitter.com/nthegedus" target="_blank"></a><a href="https://twitter.com/nthegedus" target="_blank"><span class="fa fa-twitter icon-md"></span></a>
+					</div>
+				</div>
+				<div class="col-sm-3 text-center">
+					<a class="social" href="https://www.facebook.com/nthegedus" target="_blank"></a>
+					<div class="text-center">
+						<a class="social" href="https://www.facebook.com/nthegedus" target="_blank"></a><a href="https://www.facebook.com/nthegedus" target="_blank"><span class="fa fa-facebook icon-md"></span></a>
+					</div>
+				</div>
+				<div class="col-sm-3 text-center">
+					<a class="social" href="http://www.github.com/nthegedus" target="_blank"><span class="fa fa-github icon-md"></span></a>
+				</div>
+				<div class="col-sm-3 text-center">
+					<a class="social" href="https://www.linkedin.com/in/nathanhegedus" target="_blank"></a>
+					<div class="text-center">
+						<a class="social" href="https://www.linkedin.com/in/nathanhegedus" target="_blank"></a><a href="https://www.linkedin.com/in/nathanhegedus" target="_blank"><span class="fa fa-linkedin icon-md"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - bloc-13 END -->
+</div>
+<!-- Main container END -->
+
+</body>
+    
+<!-- Google Analytics -->
+<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-60142712-1', 'auto');  ga('send', 'pageview');</script>
+<!-- Google Analytics END -->
+
+</html>
