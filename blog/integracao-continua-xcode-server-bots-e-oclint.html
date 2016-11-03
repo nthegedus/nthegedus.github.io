@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<!-- Title -->
+<title>Blog - Integração Contínua</title>
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../assets/img/favIcon.ico">
+<link rel="apple-touch-icon" href="../assets/img/favIcon.ico">
+<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/favIcon.ico">
+<link rel="apple-touch-icon" sizes="120x120" href="../assets/img/favIcon.ico">
+<link rel="apple-touch-icon" sizes="152x152" href="../assets/img/favIcon.ico">
+
+<!-- Google Web Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100' rel='stylesheet' type='text/css'>
+
+<!-- CSS Styles -->
+<link rel="stylesheet" href="../assets/css/styles.css" />
+
+<!-- CSS Template -->
+<link rel="stylesheet" href="../assets/css/theme.min.css" />
+<link rel="stylesheet" href="../assets/css/color/blue-beige.css" id="color" />
+
+</head>
+
+<body class="header-vertical">
+
+<!-- Loader -->
+<div id="page-loader" class="bg-white"></div>
+<!-- Loader / End -->
+
+<!-- Header -->
+<header id="header" class="bg-white hidden-sm hidden-xs">
+
+    <!-- Photo -->
+    <div class="photo">
+        <img src="../assets/img/photos/it-avatar.jpg" alt="...">
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-menu">
+        <ul class="nav nav-vertical">
+            <li><a href="index-it-vertical.html#start"><span>Start</span></a></li>
+            <li><a href="index-it-vertical.html#resume"><span>Resume</span></a></li>
+            <li><a href="index-it-vertical.html#portfolio"><span>Portfolio</span></a></li>
+            <li><a href="index-it-vertical.html#testimonials"><span>Testimonials</span></a></li>
+            <li><a href="index-it-vertical.html#posts"><span>Latest Posts</span></a></li>
+            <li><a href="index-it-vertical.html#contact"><span>Contact</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Social Media -->
+    <div class="social-media">
+        <strong class="text-sm">Check my social media!</strong>
+        <ul class="list-inline margin-t-10">
+            <li><a href="https://www.facebook.com/nthegedus" class="icon icon-xs"><i class="fa fa-facebook text-muted"></i></a></li>
+            <li><a href="https://www.twitter.com/nthegedus" class="icon icon-xs"><i class="fa fa-twitter text-muted"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/nathanhegedus" class="icon icon-xs"><i class="fa fa-linkedin text-muted"></i></a></li>
+        </ul>
+    </div>
+
+</header>
+<!-- Header / End -->
+
+<!-- Content -->
+<div id="content" class="bg-grey">
+
+    <!-- Section - Post -->
+    <section id="post" class="section bg-grey padding-t-20 padding-b-60">
+
+        <!-- Content -->
+        <div class="container container-wide">
+    
+            <nav class="text-center margin-b-20">
+                <a href="javascript: history.go(-1)" class="icon icon-circle icon-hover icon-sm icon-primary"><i class="ti-arrow-left"></i></a>
+                <!-- <a href="blog-vertical.html" class="icon icon-circle icon-hover icon-sm icon-secondary"><i class="ti-list"></i></a> -->
+            </nav>
+            
+            <div class="row"> 
+                <!-- Post -->
+                <article class="post col-lg-10 col-lg-push-1">
+                    <!-- <div class="post-photo">
+                        <img src="../assets/img/photos/blog-bot.png" alt="...">
+                    </div> -->
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="fa fa-user"></i>Nathan Hegedus</span>
+                            <span><i class="fa fa-tag"></i>Mobile Development</span>
+                        </div>
+                        <div class="date">03 Mar, 2015</div>
+                        <h1>Integração Contínua, Xcode Server, Bots e OCLint</h1>
+                        <p class="lead">INTRODUÇÃO</p>
+                        <p> Uma das técnicas utilizadas em metodologias ágeis, como XP e Scrum, é a integração contínua. Ela garante que a cada build o sistema funciona de forma coesa, verificando se as alterações do código ou novas funcionalidades criaram novos defeitos no projeto, mas é importante que se tenha um controle de versão centralizado.
+                        </p>
+                        <blockquote>
+                            <p>“Integração Contínua é uma pratica de desenvolvimento de software onde os membros de um time integram seu trabalho frequentemente, geralmente cada pessoa integra pelo menos diariamente – podendo haver multiplas integrações por dia. Cada integração é verificada por um build automatizado (incluindo testes) para detectar erros de integração o mais rápido possível. Muitos times acham que essa abordagem leva a uma significante redução nos problemas de integração e permite que um time desenvolva software coeso mais rapidamente.” </p>
+                            <footer><cite title="Continuous Integration">Martin Fowler</cite></footer>
+                        </blockquote>
+                        <p class="lead">XCODE SERVER</p>
+                        <p> Na WWDC 2014 a Apple apresentou a nova versão do Xcode Server que junto ao Xcode 5, ou superior, forcenem uma maneira de realizar Integração Contínua atráves de Bots, que realizam a automação de builds, análise de código, teste e archive do projeto e até mesmo distribuição automática!
+                        </p>
+                        <p>A configuração é bem simples, e é necessário um Mac rodando o Yosemite. Após a instalação a configuração básica é o Xcode, que também precisa estar instalado na máquina. A partir daí toda configuração é feita no sei Mac de development.
+                        </p>
+                        <p class="lead">BOTS</p>
+                        <p> Como dito anteriormente, os Bots são responsáveis pela Integração Contínua. Temos algumas configurações na hora de criar o Bot, como:</p>
+                        <ul class="">
+                            <li>Vincular seu repositório: Como vamos usar um controle versão e muito provavelmente o projeto terá várias pessoas trabalhando em paralelo, desta forma sempre que houver a integração o Bot utilizará a última versão do código no seu repositório;</li>
+                            <li><b>Schedule</b>: É possível agendar quando haverá a integração. Uma vez por dia, a cada 5 minutos, sempre que houver um novo commit;</li>
+                            <li><b>Actions</b>: Executar análise estática, teste e archive;</li>
+                            <li><b>Cleanning</b>: Uma vez por dia, nunca. Caso o projeto fique muito grande e você tenha várias integrações por dia, então deixar o cleanning para cada integração talvez não seja uma boa, pois a Integração pode levar muito tempo para ser realizada;</li>
+                            <li><b>Testes</b>: Você escolhe os aparelhos em que deseja testar, também é possível utilizar devices ao invés de simuladores, e esses necessitam estar conectados no servidor;</li>
+                            <li><b>Notificações</b>: Aqui é uma parte em que a Integração Contínua se torna o vilão dedo duro, pois é possível configurar receber notificações por email de testes que falharam, builds com erros e warnings e análise estática.</li>
+                        </ul>
+                        <p>Os relatórios da integrações ficam disponíveis de duas formas:</p>
+                        Relátorio na máquina de development
+                        <p><img src="../assets/img/photos/blog-bot-2.png" alt=""></p>
+                        <p>Aqui é possível ver detalhes de build de cada projeto, bem como a quantidade de erros e detalhes, warings e detalhes, issues e tests sucedidos ou não, quais aparelhos foram testados, commits e logs.</p>
+                        <p>Relatório do Xcode Server.</p>
+                        <p><img src="../assets/img/photos/blog-bot-3.png" alt=""></p>
+                        <p>Já no relatório gerado pelo servidor, apenas um resumo é exibido contento a quantidade de erros, warnings, issues e erros adicionados ou removidos na última integração. O relátorio fica alterando automáticamente entre os projetos e também é possível ver as pessoas que fizeram commit e a porcentagem de commits, erros e warnings de cada pessoa.</p>
+                        <p class="lead">OCLINT</p>
+                        <p>Contudo esses relátorios só serão exibidos após a integração, ai você se pergunta “E agora Moisés? Só vou descobrir o que tem de errado depois que me dedurarem?”. Muita hora nessa calma! Existem dois jeitos de você saber como está seu código, um deles é a análise estática feita pelo próprio Xcode e o outro é utilizar o OCLint</p>
+
+                        <blockquote>
+                            <p>"OCLint é uma ferramenta de análise estática de código para melhorar a qualidade e reduzir os defeitos inspecionando C, C ++ e código Objective-C e à procura de potenciais problemas como: Possíveis como erros - if vazios / else / try / catch / finally declarações.”</p>
+                        </blockquote>
+
+
+                        <p>Básicamente ele analisará seu código e atráves de uma lista de regras, configuráveis, ele irá reportar problemas e possíveis problemas no seu projeto. Facilitando sua vida e todos o que forem pegar o projeto e você não precisará ficar receoso de subir seu código para integração :)</p>
+
+                        <p>Essa foi apenas uma abordagem introdutória sobre esses 4 assuntos. Caso queira se aprofundar mais, eu recomendo esses links:</p>
+
+                        <ul>
+                            <li><a href="https://goo.gl/T54jxY">Integração Contínua, uma introdução ao assunto</a></li>
+                            <li><a href="https://goo.gl/gKNJCq">Integração Contínua</a></li>
+                            <li><a href="https://goo.gl/IOdqPh">Continuous Integration - Presentation</a></li>
+                            <li><a href="https://goo.gl/8FdZVB">Xcode Bots, hosted git repositories, and automated testflight builds!</a></li>
+                            <li><a href="https://goo.gl/KcD0Xm">OCLint</a></li>
+                            <li><a href="https://goo.gl/QDnVgR">Continuous Integration with Xcode 6 - WWDC 2014</a></li>
+                            <li><a href="https://goo.gl/23zwnK">Continuous Integration with Xcode Server</a></li>
+                        </ul>
+                       
+                    </div>
+
+                </article>
+            </div>  
+
+        </div>
+        
+    </section>
+    <!-- Section - Latest Posts / End -->
+
+</div>
+<!-- Content / End -->
+
+<!-- Mobile Navigation -->
+<a href="#" id="mobile-nav-toggle" class="icon icon-circle icon-sm icon-primary icon-hover visible-xs visible-sm" data-target="mobile-nav">
+    <i class="ti-menu"></i>
+</a>
+<nav id="mobile-nav" class="bg-white">
+    <div class="mobile-nav-wrapper">
+        <!-- Avatar -->
+        <img src="../assets/img/photos/it-avatar-96x96.jpg" alt="..." class="img-circle margin-b-30">
+        <!-- Nav -->
+        <ul class="nav nav-vertical">
+            <li><a href="index-it-vertical.html#start"><span>Start</span></a></li>
+            <li><a href="index-it-vertical.html#resume"><span>Resume</span></a></li>
+            <li><a href="index-it-vertical.html#portfolio"><span>Portfolio</span></a></li>
+            <li><a href="index-it-vertical.html#testimonials"><span>Testimonials</span></a></li>
+            <li><a href="index-it-vertical.html#posts"><span>Latest Posts</span></a></li>
+            <li><a href="index-it-vertical.html#contact"><span>Contact</span></a></li>
+        </ul>
+        <!-- Social Media -->
+        <div class="margin-t-20">
+            <strong class="text-sm">Check my social media!</strong>
+            <ul class="list-inline margin-t-10">
+                <li><a href="https://www.facebook.com/nthegedus" class="icon icon-xs"><i class="fa fa-facebook text-muted"></i></a></li>
+                <li><a href="https://www.twitter.com/nthegedus" class="icon icon-xs"><i class="fa fa-twitter text-muted"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/nathanhegedus" class="icon icon-xs"><i class="fa fa-linkedin text-muted"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <a href="#" class="mobile-nav-close icon icon-hover icon-xs icon-circle icon-primary" data-target="mobile-nav"><i class="fa fa-times"></i></a>
+</nav>
+
+<!-- Ajax Wrapper & Loader -->
+<div id="ajax-modal"></div>
+<div id="ajax-loader"><i class="fa fa-spinner fa-spin"></i></div>
+
+<!-- FB Like -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- JS Libraries -->
+<script src="../assets/js/jquery-1.11.3.min.js"></script>
+
+<!-- JS Plugins -->
+<script>
+window.paceOptions = {
+    target: '#page-loader',
+    ajax: false
+};
+</script>
+<script src="../assets/js/plugins.js"></script>
+
+<!-- JS Core -->
+<script src="../assets/js/core.min.js"></script>
+
+<!-- Google Map API -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<!-- Google Analytics --> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60142712-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- Google Analytics END -->
+
+</body>
+
+</html>
